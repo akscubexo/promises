@@ -1,0 +1,54 @@
+//async code- setTimeout
+
+let pizza 
+function orderPizza(){
+    console.log('Order Pizza')
+    setTimeout(()=> {
+        pizza = 'yum';
+        console.log(`${pizza} is ready`)
+    }, 2000)
+    console.log('Pizza was ordered')
+}
+orderPizza()
+console.log('Call qoli')
+console.log(`Eat ${pizza}`)
+
+//O/p
+Order Pizza
+Pizza was ordered
+Call qoli
+Eat undefined
+yum is ready  //after 2 sec
+
+//code w async keyword
+async function getData(){
+    return new Promise((resolve)=> {
+        setTimeout(()=> {
+            const data= "some data";
+            resolve(data);
+        }, 1000);
+    });
+}
+async function main(){
+    const result = await getData();
+    console.log(result);
+}
+main();
+
+// CallBack Func
+function orderPizza(callback){
+    setTimeout(() => {
+        const pizza= 'yum'
+        callback(pizza)
+    }, 2000)
+}
+function pizzaReady(pizza){
+    console.log(`Eat the ${pizza}`)
+}
+
+orderPizza(pizzaReady)
+console.log('Call Qoli')
+
+//o/p
+Call Qoli
+Eat the yum
